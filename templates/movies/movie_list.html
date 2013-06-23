@@ -1,0 +1,39 @@
+{% extends "base.html"%}
+{% block content %}
+<ul data-role="listview" data-inset="true">
+{% for movie in movie_list %}
+<li> 
+	<a href="{% url movie movie.idmovie %}" data-transition="slide">
+    	<img src="{{ STATIC_URL }}img/{{movie.idmovie}}_93x140_thumbnail.jpg"  class="ui-li-thumb">
+    	<h1 class="ui-li-heading">{{movie.title}} ({{movie.yearreleased}})</h1>
+    	<p><strong>{{movie.genre}}</strong></p>
+    	<p><i>{{movie.movietagline}}</i></p>
+    </a>
+</li>
+{% endfor %}
+</ul>
+
+<div class="pagination">
+	<div class="ui-grid-b">
+    <span class="step-links">
+    	<div class="ui-block-a">
+        {% if movie_list.has_previous %}
+            <a href="?page={{ movie_list.previous_page_number }}" data-role="button" data-icon="arrow-l" data-transition="reverse slide">previous</a>
+        {% endif %}
+		</div>
+		<div class="ui-block-b">
+        <span class="current">
+            <center>{{ movie_list.number }} of {{ movie_list.paginator.num_pages }}</center>
+        </span>
+		</div>
+		<div class="ui-block-c">
+        {% if movie_list.has_next %}
+            <a href="?page={{ movie_list.next_page_number }}" data-role="button" data-icon="arrow-r" data-transition="slide">next</a>
+        {% endif %}
+        </div>
+    </span>
+    </div><!-- /grid-b -->
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html"%}
+
+{% block content %}
+<ul data-role="listview" data-inset="true"> 
+	{% for year in year_list %}
+		<li><a href="{% url year year%}" data-transition="slide">{{year}}</a></li>	
+	{% endfor %}
+</ul>		
+{% endblock %}

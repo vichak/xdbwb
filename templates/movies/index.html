@@ -1,0 +1,10 @@
+{% extends "base.html"%}
+
+{% block content %}
+<ul data-role="listview" data-inset="true">
+	<li><a href="{% url movie_all %}" data-transition="slide">Tous<span class="ui-li-count">{{nb_movie}}</span></a></li>
+	<li><a href="{% url genres %}" data-transition="slide">Genres</a></li>
+	<li><a href="{% url years %}" data-transition="slide">Années</a></li>
+	<li><a href="{% url random %}" data-transition="slide">Random</a></li>
+</ul>
+{% endblock %}

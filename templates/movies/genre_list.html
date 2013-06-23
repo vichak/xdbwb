@@ -1,0 +1,9 @@
+{% extends "base.html"%}
+
+{% block content %}
+<ul data-role="listview" data-inset="true" data-count-theme="b"> 
+	{% for genre in genre_list %}
+		<li><a href="{% url genre genre.strgenre|urlencode %}" data-transition="slide">{{genre.strgenre}}</a></li>	
+	{% endfor %}
+</ul>		
+{% endblock %}

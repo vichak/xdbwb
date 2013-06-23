@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XDBWB</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="{{STATIC_URL}}favicon.ico" type="image/x-icon">
+        <link rel="icon" href="{{STATIC_URL}}favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="{{STATIC_URL}}custom_icon.png"/>
+        <!-- /header -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+        <link rel="stylesheet" href="{{STATIC_URL}}/jQuery-Mobile-Icon-Pack/font-awesome/jqm-icon-pack-fa.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="a" data-content-theme="a">
+            <div data-role="panel" id="mypanel" data-theme="a" data-display="push">
+                <ul data-role="listview"  data-inset="true" data-divider-theme="d">
+                    <li data-role="list-divider">
+                        Films
+                    </li>
+                    <li data-icon="film">
+                        <a href="{% url movie_all %}" data-transition="slide">Tous</a>
+                    </li>
+                    <li data-icon="film">
+                        <a href="{% url genres %}">Genres</a>
+                    </li>
+                    <li data-icon="film">
+                        <a href="{% url years %}">Années</a>
+                    </li>
+                    <li data-icon="film">
+                        <a href="{% url random %}">Random</a>
+                    </li>
+                    <li data-role="list-divider">
+                        Séries
+                    </li>
+                    <li>
+                        <a href="#">TODO :)</a>
+                    </li>
+                    <li data-role="list-divider">
+                        Utilisateur
+                    </li>
+                    <li data-icon="signout">
+                        <a href="{% url logout %}">Déconnexion</a>
+                    </li>
+                </ul>
+            </div><!-- /panel -->
+            <div data-role="header" data-theme="a">
+                <h1>XDBWB</h1>
+                <a href="#mypanel" data-icon="grid">Menu</a>
+            </div><!-- /header -->
+
+            <div data-role="content" data-theme="a" data-count-theme="b">
+                {% block content %}
+                {% endblock %}
+            </div><!-- /content -->
+            <div data-theme="a" data-role="footer" data-position="fixed">
+                <h3> Vichak </h3>
+            </div>
+        </div><!-- page -->
+    </body>
+

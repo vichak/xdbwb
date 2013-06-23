@@ -1,0 +1,83 @@
+{% extends "base.html"%}
+{% block content %}
+<div style="text-align:center;">
+    <h2>{{movie.title}} ({{movie.yearreleased}})</h2>
+    <p>
+        {{movie.genre}}
+    </p>
+    <img src="{{ STATIC_URL }}img/{{movie.idmovie}}_225x300_thumbnail.jpg" width="225" height="300">
+</div>
+<h3>Résumé</h3>
+<p>
+    {{movie.movieplot}}
+</p>
+<div class="ui-grid-a">
+    <div class="ui-block-a">
+        Scénariste(s): {{movie.writers}}
+    </div>
+    <div class="ui-block-b">
+        Réalisateur: {{movie.director}}
+    </div>
+    <div class="ui-block-a">
+        Note: {{movie.rating}} /10 ({{movie.ratingvotes}} votes)
+    </div>
+    <div class="ui-block-b">
+        Titre d'origine: {{movie.originalmovietitle}}
+    </div>
+    <div class="ui-block-a">
+        Studio: {{movie.studio}}
+    </div>
+    <div class="ui-block-b">
+        Pays: {{movie.country}}
+    </div>
+    <div class="ui-block-a">
+        Durée: {{movie.runtime}} minutes
+    </div>
+    {% for stream in streamdetails %}
+    <p>
+        {{stream}}
+    </p>
+    {% if stream.istreamtype %} <!-- audio -->
+    <div class="ui-block-a">
+        Audio codec : {{stream.straudiocodec}}
+    </div>
+    <div class="ui-block-b">
+        Audio chanel : {{stream.iaudiochannels}}
+    </div>
+    <div class="ui-block-a">
+        Audio language : {{stream.straudiolanguage}}
+    </div>
+    <div class="ui-block-b">
+        Audio subtitle : {{stream.strsubtitlelanguage}}
+    </div>
+    {% else %}
+    <div class="ui-block-a">
+        Video codec : {{stream.strvideocodec}}
+    </div>
+    <div class="ui-block-b">
+        Video fvideoaspect : {{stream.fvideoaspect}}
+    </div>
+    <div class="ui-block-a">
+        Video ivideowidth : {{stream.ivideowidth}}
+    </div>
+    <div class="ui-block-b">
+        Video ivideoheight : {{stream.ivideoheight}}
+    </div>
+    <div class="ui-block-a">
+        Video ivideoduration : {{stream.ivideoduration}}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div><!-- /grid-a -->
+<div class="ui-grid-b">
+    <div class="ui-block-a">
+        <a data-role="button" data-icon="globe" href="http:///www.imdb.com/title/{{movie.idimbd}}/" target="_blank"> Plus d'info sur IMBd.com </a>
+    </div>
+    <div class="ui-block-b">
+        <a data-role="button" data-icon="cloud-download" rel="external" href="{% url download movie.idfile %}"> Download </a>
+    </div>
+    <div class="ui-block-c">
+        <a data-role="button" data-icon="facetime-video" href="{{movie.get_trailer_url}}/" target="_blank"> Bande-annonce </a>
+    </div>
+</div>
+{% endblock %}
