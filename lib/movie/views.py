@@ -3,7 +3,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.servers.basehttp import FileWrapper
 from django.http import HttpResponse
 from django.shortcuts import get_list_or_404, render, get_object_or_404
-from lib.forms import SearchMovie
 from lib.models import Movie, Writerlinkmovie, Genre, Files, Path, Streamdetails
 from random import randint
 import os
