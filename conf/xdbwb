@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+        ServerAdmin webmaster@example.com
+
+        WSGIDaemonProcess daemon-monprojet user=www-data group=www-data processes=2 maximum-requests=2 threads=22 inactivity-timeout=12
+        WSGIProcessGroup daemon-monprojet
+        WSGIScriptAlias / /var/www/xdbwb/conf/xdbwb.wsgi
+
+        <Directory /var/www/xdbwb>
+                Order deny,allow
+                Allow from all
+        </Directory>
+
+        ErrorLog /var/log/apache2/xdbwb.error.log
+        CustomLog /var/log/apache2/xdbwb.access.log combined
+
+</VirtualHost>
+
